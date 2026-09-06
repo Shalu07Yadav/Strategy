@@ -1,0 +1,77 @@
+public class strategy {
+
+    public static  interface  talkable {
+     
+        void talk();
+        
+    }
+
+    public static class NormalTalk implements talkable{
+
+        public void talk(){
+         System.out.println("talking normally ");
+        }
+    }
+
+    public static class NoTalk implements talkable{
+
+        public void talk(){
+         System.out.println("no talking");
+        }
+    }
+
+
+     public static  interface  walkable {
+     
+        void walk();
+        
+    }
+
+    public static class NormalWalk implements walkable{
+
+        public void walk(){
+         System.out.println("walking normally ");
+        }
+    }
+
+    public static class Nowalk implements walkable{
+
+        public void walk(){
+         System.out.println("no walking");
+        }
+    }
+
+    public static  class Robot{
+        public talkable talk;
+         public walkable walk;
+
+
+        public Robot(talkable talk,walkable walk){
+            this.talk=talk;
+            this.walk=walk;
+        }
+
+     //how to delegate this talk and walk
+     public void talk(){
+        talk.talk();
+     }
+
+     public void walk(){
+        walk.walk();
+     }
+
+      public void projection(){
+        System.out.println("projecting");
+      }
+
+    }
+
+
+    public static void main(String[] args) {
+      Robot r=new Robot(new NoTalk(), new NormalWalk());
+      
+      r.talk();
+      r.walk();
+      r.projection();
+    }
+}
